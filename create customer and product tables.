@@ -1,0 +1,31 @@
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "info123",
+    database: "shopping2"
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+
+    console.log("Connected Successfully!");
+
+    connection.query(
+        "CREATE TABLE product (pname VARCHAR(25), category VARCHAR(25), price INT)",
+        function(err, result) {
+            if (err) throw err;
+            console.log("Product table created");
+        }
+    );
+
+    connection.query(
+        "CREATE TABLE customer (cname VARCHAR(25), address VARCHAR(25))",
+        function(err, result) {
+            if (err) throw err;
+            console.log("Customer table created");
+            connection.end();
+        }
+    );
+});
