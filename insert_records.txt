@@ -1,0 +1,31 @@
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "info123",
+    database: "shopping2"
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+
+    console.log("Connected Successfully!");
+
+    connection.query(
+        "INSERT INTO product VALUES ('pizza','food',200),('dabeli','food',80),('noodles','food',300)",
+        function(err, result) {
+            if (err) throw err;
+            console.log("3 products inserted successfully.");
+        }
+    );
+
+    connection.query(
+        "INSERT INTO customer VALUES ('chirag','gujarat'),('golu','up'),('amit','bihar')",
+        function(err, result) {
+            if (err) throw err;
+            console.log("3 customers inserted successfully.");
+            connection.end();
+        }
+    );
+});

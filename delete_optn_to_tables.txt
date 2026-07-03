@@ -1,0 +1,45 @@
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "info123",
+    database: "shopping2"
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+
+    console.log("Connected Successfully!");
+
+    connection.query("DELETE FROM product WHERE price=80", function(err, result) {
+        if (err) throw err;
+
+        console.log("Product deleted successfully.");
+
+        connection.end();
+    });
+});
+
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "info123",
+    database: "shopping2"
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+
+    console.log("Connected Successfully!");
+
+    connection.query("DELETE FROM customer WHERE cname='golu'", function(err, result) {
+        if (err) throw err;
+
+        console.log("Customer deleted successfully.");
+
+        connection.end();
+    });
+});

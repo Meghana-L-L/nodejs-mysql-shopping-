@@ -1,0 +1,45 @@
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "info123",
+    database: "shopping2"
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+
+    console.log("Connected Successfully!");
+
+    connection.query("SELECT * FROM product", function(err, result) {
+        if (err) throw err;
+
+        console.table(result);
+
+        connection.end();
+    });
+});
+
+const mysql = require("mysql");
+
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "info123",
+    database: "shopping2"
+});
+
+connection.connect(function(err) {
+    if (err) throw err;
+
+    console.log("Connected Successfully!");
+
+    connection.query("SELECT * FROM customer", function(err, result) {
+        if (err) throw err;
+
+        console.table(result);
+
+        connection.end();
+    });
+});
